@@ -1,0 +1,8 @@
+Temp/
+Library/
+Logs/
+
+.DS_Store
+
+UserSettings/
+.vscode/
