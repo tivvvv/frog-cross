@@ -9,6 +9,8 @@ public class PlayerController : MonoBehaviour
 
     private Animator anim;
 
+    private SpriteRenderer sr;
+
     public float jumpDistance;
 
     private float moveDistance;
@@ -35,6 +37,7 @@ public class PlayerController : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
+        sr = GetComponent<SpriteRenderer>();
     }
 
     private void Update()
@@ -80,8 +83,6 @@ public class PlayerController : MonoBehaviour
 
         if (context.canceled && buttonHeld)
         {
-
-            // 执行跳跃
             buttonHeld = false;
         }
 
@@ -141,12 +142,14 @@ public class PlayerController : MonoBehaviour
     public void JumpAnimationEvent()
     {
         isJump = true;
-
+        // 修改排序图层
+        sr.sortingLayerName = "Front";
     }
 
     public void FinishJumpAnimationEvent()
     {
         isJump = false;
+        sr.sortingLayerName = "Middle";
     }
     #endregion
 }
