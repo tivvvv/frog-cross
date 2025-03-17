@@ -15,11 +15,21 @@ public class PlayerController : MonoBehaviour
 
     private Vector2 destination;
 
+    private Vector2 touchPosition;
+
     private bool buttonHeld;
 
     private bool isJump;
 
     private bool canJump;
+
+    private enum Direction
+    {
+        Up, Right, Left
+    }
+
+    private Direction dir;
+
 
     private void Awake()
     {
@@ -51,7 +61,7 @@ public class PlayerController : MonoBehaviour
         if (context.performed && !isJump)
         {
             moveDistance = jumpDistance;
-            destination = new Vector2(transform.position.x, transform.position.y + moveDistance);
+
             // 执行跳跃
             canJump = true;
 
@@ -70,7 +80,7 @@ public class PlayerController : MonoBehaviour
 
         if (context.canceled && buttonHeld)
         {
-            destination = new Vector2(transform.position.x, transform.position.y + moveDistance);
+
             // 执行跳跃
             buttonHeld = false;
         }
@@ -78,11 +88,23 @@ public class PlayerController : MonoBehaviour
     }
     public void GetTouchPosition(InputAction.CallbackContext context)
     {
-        if (context.phase == InputActionPhase.Performed)
+        if (context.performed)
         {
-            Debug.Log("JUMP!" + context);
+            touchPosition = Camera.main.ScreenToWorldPoint(context.ReadValue<Vector2>());
+            var offset = ((Vector3)touchPosition - transform.position).normalized;
+            if (Mathf.Abs(offset.x) <= 0.7f)
+            {
+                dir = Direction.Up;
+            }
+            else if (offset.x < 0)
+            {
+                dir = Direction.Left;
+            }
+            else
+            {
+                dir = Direction.Right;
+            }
         }
-
     }
     #endregion
 
@@ -92,7 +114,20 @@ public class PlayerController : MonoBehaviour
     private void TriggerJump()
     {
         canJump = false;
-        // 播放动画
+        // 获取移动方向并播放动画
+        switch (dir)
+        {
+            case Direction.Up:
+                destination = new Vector2(transform.position.x, transform.position.y + moveDistance);
+                break;
+            case Direction.Right:
+                destination = new Vector2(transform.position.x + moveDistance, transform.position.y);
+                break;
+            case Direction.Left:
+                destination = new Vector2(transform.position.x - moveDistance, transform.position.y);
+                break;
+        }
+    
         anim.SetTrigger("Jump");
     }
 
@@ -100,6 +135,7 @@ public class PlayerController : MonoBehaviour
     public void JumpAnimationEvent()
     {
         isJump = true;
+    
     }
 
     public void FinishJumpAnimationEvent()
