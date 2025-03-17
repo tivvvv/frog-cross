@@ -118,16 +118,22 @@ public class PlayerController : MonoBehaviour
         switch (dir)
         {
             case Direction.Up:
+                anim.SetBool("isSide", false);
                 destination = new Vector2(transform.position.x, transform.position.y + moveDistance);
+                transform.localScale = Vector3.one;
                 break;
             case Direction.Right:
+                anim.SetBool("isSide", true);
                 destination = new Vector2(transform.position.x + moveDistance, transform.position.y);
+                transform.localScale = new Vector3(-1, 1, 1);
                 break;
             case Direction.Left:
+                anim.SetBool("isSide", true);
                 destination = new Vector2(transform.position.x - moveDistance, transform.position.y);
+                transform.localScale = Vector3.one;
                 break;
         }
-    
+
         anim.SetTrigger("Jump");
     }
 
@@ -135,7 +141,7 @@ public class PlayerController : MonoBehaviour
     public void JumpAnimationEvent()
     {
         isJump = true;
-    
+
     }
 
     public void FinishJumpAnimationEvent()
