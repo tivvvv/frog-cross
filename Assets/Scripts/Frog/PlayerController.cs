@@ -55,7 +55,19 @@ public class PlayerController : MonoBehaviour
         {
             rb.position = Vector2.Lerp(transform.position, destination, 0.134f);
         }
+    }
 
+    private void OnTriggerStay2D(Collider2D other)
+    {
+        if (other.CompareTag("Border"))
+        {
+            Debug.Log("game over");
+        }
+
+        if (!isJump && other.CompareTag("Obstacle"))
+        {
+            Debug.Log("game over");
+        }
     }
 
     #region INPUT 输入回调函数
