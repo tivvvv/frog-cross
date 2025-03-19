@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class Spawner : MonoBehaviour
 {
+    // 孵化器的方向
+    public int direction;
+
     public List<GameObject> spawnObject;
 
     private void Start()
@@ -13,7 +16,8 @@ public class Spawner : MonoBehaviour
 
     private void Spawn()
     {
-        var index = Random.Range(0, spawnObject.Count);
-        Instantiate(spawnObject[index], transform.position, Quaternion.identity, transform);
+        int index = Random.Range(0, spawnObject.Count);
+        GameObject car = Instantiate(spawnObject[index], transform.position, Quaternion.identity, transform);
+        car.GetComponent<MoveForward>().dir = direction;
     }
 }

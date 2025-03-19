@@ -6,11 +6,15 @@ public class MoveForward : MonoBehaviour
 {
     public float speed;
 
+    // 汽车的方向
+    public int dir;
+
     private Vector2 startPos;
 
     private void Start()
     {
         startPos = transform.position;
+        transform.localScale = new Vector3(dir, 1, 1);
     }
 
     void Update()
@@ -24,6 +28,6 @@ public class MoveForward : MonoBehaviour
 
     private void Move()
     {
-        transform.position += transform.right * speed * Time.deltaTime;
+        transform.position += transform.right * dir * speed * Time.deltaTime;
     }
 }
