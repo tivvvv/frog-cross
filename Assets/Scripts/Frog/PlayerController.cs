@@ -32,6 +32,8 @@ public class PlayerController : MonoBehaviour
 
     private Direction dir;
 
+    // 判断碰撞检测返回的物体
+    private RaycastHit2D[] result = new RaycastHit2D[2];
 
     private void Awake()
     {
@@ -67,6 +69,20 @@ public class PlayerController : MonoBehaviour
         if (!isJump && other.CompareTag("Obstacle"))
         {
             Debug.Log("game over");
+        }
+
+        if (!isJump && other.CompareTag("Water"))
+        {
+            Physics2D.RaycastNonAlloc(transform.position + Vector3.up * 0.1f, Vector2.zero, result);
+
+            foreach (RaycastHit2D hit in result)
+            {
+                if (hit.collider == null) continue;
+                if (hit.collider.CompareTag("Wood"))
+                {
+                    Debug.Log("在木板上");
+                }
+            }
         }
     }
 
