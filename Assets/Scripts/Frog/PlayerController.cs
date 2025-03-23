@@ -5,6 +5,8 @@ using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
+    public TerrainManager terrainManager;
+
     private Rigidbody2D rb;
 
     private Animator anim;
@@ -24,6 +26,8 @@ public class PlayerController : MonoBehaviour
     private bool isJump;
 
     private bool canJump;
+
+    private bool isDead;
 
     private enum Direction
     {
@@ -64,11 +68,13 @@ public class PlayerController : MonoBehaviour
         if (other.CompareTag("Border") || other.CompareTag("Car"))
         {
             Debug.Log("game over");
+            isDead = true;
         }
 
         if (!isJump && other.CompareTag("Obstacle"))
         {
             Debug.Log("game over");
+            isDead = true;
         }
 
         if (!isJump && other.CompareTag("Water"))
@@ -92,6 +98,7 @@ public class PlayerController : MonoBehaviour
             if (inWater && !isJump)
             {
                 Debug.Log("game over");
+                isDead = true;
             }
         }
     }
@@ -193,6 +200,12 @@ public class PlayerController : MonoBehaviour
     {
         isJump = false;
         sr.sortingLayerName = "Middle";
+
+        if (dir == Direction.Up && !isDead)
+        {
+            // 触发地图检测
+            terrainManager.CheckPosition();
+        }
     }
     #endregion
 }
