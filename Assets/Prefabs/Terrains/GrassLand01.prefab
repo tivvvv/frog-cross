@@ -1017,6 +1017,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2400949195583614794}
+  - component: {fileID: 1641713707659716098}
   m_Layer: 0
   m_Name: GrassLand01
   m_TagString: Untagged
@@ -1070,6 +1071,18 @@ Transform:
   - {fileID: 1780276199129442128}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1641713707659716098
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3138640483092450287}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 91d5b4c221fb6444fba1d6b1dc554296, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &3164703086884304667
 GameObject:
   m_ObjectHideFlags: 0

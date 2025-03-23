@@ -188,6 +188,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8412251953663202723}
+  - component: {fileID: -6707934401873612080}
   m_Layer: 0
   m_Name: River
   m_TagString: Untagged
@@ -214,6 +215,18 @@ Transform:
   - {fileID: 1354825977033594350}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &-6707934401873612080
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5735220022176039466}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 91d5b4c221fb6444fba1d6b1dc554296, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6145749495612210685
 GameObject:
   m_ObjectHideFlags: 0
