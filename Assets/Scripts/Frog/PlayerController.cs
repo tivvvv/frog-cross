@@ -12,7 +12,12 @@ public class PlayerController : MonoBehaviour
     private Animator anim;
 
     private SpriteRenderer sr;
+    [Header("得分")]
+    public int stepPoint;
 
+    private int pointResult;
+
+    [Header("跳跃")]
     public float jumpDistance;
 
     private float moveDistance;
@@ -89,7 +94,7 @@ public class PlayerController : MonoBehaviour
 
                 if (hit.collider.CompareTag("Wood"))
                 {
-                    // 跟随木板
+                    // 跟随木板移动
                     transform.parent = hit.collider.transform;
                     inWater = false;
                 }
@@ -109,10 +114,13 @@ public class PlayerController : MonoBehaviour
         if (context.performed && !isJump)
         {
             moveDistance = jumpDistance;
-
             // 执行跳跃
             canJump = true;
 
+            if (dir == Direction.Up)
+            {
+                pointResult += stepPoint;
+            }
         }
 
     }
@@ -123,12 +131,17 @@ public class PlayerController : MonoBehaviour
         {
             moveDistance = jumpDistance * 2;
             buttonHeld = true;
-            canJump = true;
         }
 
-        if (context.canceled && buttonHeld)
+        if (context.canceled && buttonHeld && !isJump)
         {
             buttonHeld = false;
+            canJump = true;
+
+            if (dir == Direction.Up)
+            {
+                pointResult += stepPoint * 2;
+            }
         }
 
     }
@@ -205,6 +218,8 @@ public class PlayerController : MonoBehaviour
         {
             // 触发地图检测
             terrainManager.CheckPosition();
+
+            Debug.Log("得分:" + pointResult);
         }
     }
     #endregion

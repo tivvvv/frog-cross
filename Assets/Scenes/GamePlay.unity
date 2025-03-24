@@ -2897,6 +2897,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   terrainManager: {fileID: 1435535416}
+  stepPoint: 10
   jumpDistance: 2
 --- !u!114 &1150678940
 MonoBehaviour:
