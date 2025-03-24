@@ -5,8 +5,6 @@ using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
-    public TerrainManager terrainManager;
-
     private Rigidbody2D rb;
 
     private Animator anim;
@@ -216,10 +214,8 @@ public class PlayerController : MonoBehaviour
 
         if (dir == Direction.Up && !isDead)
         {
-            // 触发地图检测
-            terrainManager.CheckPosition();
-
-            Debug.Log("得分:" + pointResult);
+            // 触发事件
+            EventHandler.CallGetPointEvent(pointResult);
         }
     }
     #endregion

@@ -12,6 +12,21 @@ public class TerrainManager : MonoBehaviour
 
     private int lastIndex;
 
+    private void OnEnable()
+    {
+        EventHandler.GetPointEvent += OnGetPointEvent;
+    }
+
+    private void OnDisable()
+    {
+        EventHandler.GetPointEvent -= OnGetPointEvent;
+    }
+
+    private void OnGetPointEvent(int point)
+    {
+        CheckPosition();
+    }
+
     public void CheckPosition()
     {
         if (transform.position.y - Camera.main.transform.position.y < offsetY / 2)

@@ -68,6 +68,8 @@
     <Compile Include="Assets/Scripts/Camera/CameraController.cs" />
     <Compile Include="Assets/Scripts/Gameplay/Spawner.cs" />
     <Compile Include="Assets/Scripts/Frog/PlayerController.cs" />
+    <Compile Include="Assets/Scripts/UI/UIManager.cs" />
+    <Compile Include="Assets/Scripts/Utils/EventHandler.cs" />
     <Compile Include="Assets/Scripts/Gameplay/MoveForward.cs" />
     <Compile Include="Assets/Scripts/Gameplay/Block.cs" />
   </ItemGroup>
