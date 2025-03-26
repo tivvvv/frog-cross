@@ -7,6 +7,8 @@ public class UIManager : MonoBehaviour
 {
     public Text scoreText;
 
+    public GameObject gameOverPanel;
+
     private void OnEnable()
     {
         EventHandler.GetPointEvent += OnGetPointEvent;
