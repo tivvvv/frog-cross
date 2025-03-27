@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class UIManager : MonoBehaviour
 {
@@ -11,6 +12,7 @@ public class UIManager : MonoBehaviour
 
     private void OnEnable()
     {
+        Time.timeScale = 1;
         EventHandler.GetPointEvent += OnGetPointEvent;
         EventHandler.GameOverEvent += OnGameOverEvent;
     }
@@ -39,5 +41,10 @@ public class UIManager : MonoBehaviour
     private void Start()
     {
         scoreText.text = "00";
+    }
+
+    public void RestartGame()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }
