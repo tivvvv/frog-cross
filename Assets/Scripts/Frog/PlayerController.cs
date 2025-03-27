@@ -104,6 +104,12 @@ public class PlayerController : MonoBehaviour
                 isDead = true;
             }
         }
+
+        if (isDead)
+        {
+            // 游戏结束
+            EventHandler.CallGameOverEvent();
+        }
     }
 
     #region INPUT 输入回调函数
