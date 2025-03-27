@@ -10,6 +10,9 @@ public class PlayerController : MonoBehaviour
     private Animator anim;
 
     private SpriteRenderer sr;
+
+    private PlayerInput playerInput;
+
     [Header("得分")]
     public int stepPoint;
 
@@ -47,10 +50,17 @@ public class PlayerController : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
         sr = GetComponent<SpriteRenderer>();
+        playerInput = GetComponent<PlayerInput>();
     }
 
     private void Update()
     {
+        if (isDead)
+        {
+            DisableInput();
+            return;
+        }
+
         if (canJump)
         {
             TriggerJump();
@@ -225,4 +235,9 @@ public class PlayerController : MonoBehaviour
         }
     }
     #endregion
+
+    private void DisableInput()
+    {
+        playerInput.enabled = false;
+    }
 }
