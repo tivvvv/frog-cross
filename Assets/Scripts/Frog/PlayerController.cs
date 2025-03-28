@@ -13,6 +13,8 @@ public class PlayerController : MonoBehaviour
 
     private PlayerInput playerInput;
 
+    private BoxCollider2D bc;
+
     [Header("得分")]
     public int stepPoint;
 
@@ -51,6 +53,7 @@ public class PlayerController : MonoBehaviour
         anim = GetComponent<Animator>();
         sr = GetComponent<SpriteRenderer>();
         playerInput = GetComponent<PlayerInput>();
+        bc = GetComponent<BoxCollider2D>();
     }
 
     private void Update()
@@ -119,6 +122,7 @@ public class PlayerController : MonoBehaviour
         {
             // 游戏结束
             EventHandler.CallGameOverEvent();
+            bc.enabled = false;
         }
     }
 

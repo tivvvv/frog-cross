@@ -19,6 +19,10 @@ public class TransitionManager : MonoBehaviour
         {
             instance = this;
         }
+        else
+        {
+            Destroy(this.gameObject);
+        }
 
         DontDestroyOnLoad(this);
 
@@ -31,6 +35,7 @@ public class TransitionManager : MonoBehaviour
 
     public void Transition(string sceneName)
     {
+        Time.timeScale = 1;
         StartCoroutine(TransitionToScene(sceneName));
     }
 
