@@ -1,9 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class TransitionManager : MonoBehaviour
 {
+    public static TransitionManager instance;
+
     private CanvasGroup canvasGroup;
 
     public float scaler;
@@ -11,11 +14,33 @@ public class TransitionManager : MonoBehaviour
     private void Awake()
     {
         canvasGroup = GetComponent<CanvasGroup>();
+
+        if (instance == null)
+        {
+            instance = this;
+        }
+
+        DontDestroyOnLoad(this);
+
     }
 
     private void Start()
     {
         StartCoroutine(Fade(0));
+    }
+
+    public void Transition(string sceneName)
+    {
+        StartCoroutine(TransitionToScene(sceneName));
+    }
+
+    private IEnumerator TransitionToScene(string sceneName)
+    {
+        yield return Fade(1);
+
+        yield return SceneManager.LoadSceneAsync(sceneName);
+
+        yield return Fade(0);
     }
 
     private IEnumerator Fade(int amount)

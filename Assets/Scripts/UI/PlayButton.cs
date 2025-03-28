@@ -16,6 +16,6 @@ public class PlayButton : MonoBehaviour
 
     private void StartGame()
     {
-        SceneManager.LoadScene("Gameplay");
+        TransitionManager.instance.Transition("Gameplay");
     }
 }
