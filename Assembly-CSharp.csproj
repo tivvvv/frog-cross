@@ -67,6 +67,7 @@
     <Compile Include="Assets/Scripts/Gameplay/TerrainManager.cs" />
     <Compile Include="Assets/Scripts/UI/PlayButton.cs" />
     <Compile Include="Assets/Scripts/Camera/CameraController.cs" />
+    <Compile Include="Assets/Scripts/Gameplay/GameManager.cs" />
     <Compile Include="Assets/Scripts/Gameplay/Spawner.cs" />
     <Compile Include="Assets/Scripts/Frog/PlayerController.cs" />
     <Compile Include="Assets/Scripts/UI/UIManager.cs" />
@@ -410,6 +411,10 @@
     </Reference>
     <Reference Include="Unity.Collections.LowLevel.ILSupport">
       <HintPath>Library/PackageCache/com.unity.collections@1.2.4/Unity.Collections.LowLevel.ILSupport/Unity.Collections.LowLevel.ILSupport.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>Library/PackageCache/com.unity.nuget.newtonsoft-json@3.2.1/Runtime/Newtonsoft.Json.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="UnityEditor.iOS.Extensions.Xcode">
