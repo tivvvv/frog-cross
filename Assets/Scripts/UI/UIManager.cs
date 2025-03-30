@@ -10,6 +10,8 @@ public class UIManager : MonoBehaviour
 
     public GameObject gameOverPanel;
 
+    public GameObject leaderboardPanel;
+
     private void OnEnable()
     {
         Time.timeScale = 1;
@@ -43,6 +45,7 @@ public class UIManager : MonoBehaviour
         scoreText.text = "00";
     }
 
+    #region 按钮事件
     public void RestartGame()
     {
         gameOverPanel.SetActive(false);
@@ -54,4 +57,10 @@ public class UIManager : MonoBehaviour
         gameOverPanel.SetActive(false);
         TransitionManager.instance.Transition("Title");
     }
+
+    public void OpenLeaderBoard()
+    {
+        leaderboardPanel.SetActive(true);
+    }
+    #endregion
 }

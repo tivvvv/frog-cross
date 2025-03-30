@@ -6,6 +6,7 @@ using System.IO;
 
 public class GameManager : MonoBehaviour
 {
+    public static GameManager instance;
     private int score;
     public List<int> scoreList;
     private string dataPath;
@@ -14,6 +15,15 @@ public class GameManager : MonoBehaviour
     {
         dataPath = Application.persistentDataPath + "/leaderboard.json";
         scoreList = GetScoreListData();
+        if (instance == null)
+        {
+            instance = this;
+        }
+        else
+        {
+            Destroy(this.gameObject);
+        }
+
         DontDestroyOnLoad(this);
     }
 
@@ -47,7 +57,7 @@ public class GameManager : MonoBehaviour
         File.WriteAllText(dataPath, JsonConvert.SerializeObject(scoreList));
     }
 
-    private List<int> GetScoreListData()
+    public List<int> GetScoreListData()
     {
         if (File.Exists(dataPath))
         {
