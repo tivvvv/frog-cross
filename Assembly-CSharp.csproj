@@ -65,6 +65,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets/Scripts/Gameplay/TerrainManager.cs" />
+    <Compile Include="Assets/Scripts/UI/Leaderboard.cs" />
     <Compile Include="Assets/Scripts/UI/PlayButton.cs" />
     <Compile Include="Assets/Scripts/UI/ScoreRecord.cs" />
     <Compile Include="Assets/Scripts/Camera/CameraController.cs" />
