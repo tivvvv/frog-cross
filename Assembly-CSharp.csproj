@@ -73,6 +73,7 @@
     <Compile Include="Assets/Scripts/Gameplay/Spawner.cs" />
     <Compile Include="Assets/Scripts/Frog/PlayerController.cs" />
     <Compile Include="Assets/Scripts/UI/UIManager.cs" />
+    <Compile Include="Assets/Scripts/Audio/AudioManager.cs" />
     <Compile Include="Assets/Scripts/Gameplay/TransitionManager.cs" />
     <Compile Include="Assets/Scripts/Utils/EventHandler.cs" />
     <Compile Include="Assets/Scripts/Gameplay/MoveForward.cs" />

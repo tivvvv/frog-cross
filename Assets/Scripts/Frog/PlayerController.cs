@@ -134,6 +134,7 @@ public class PlayerController : MonoBehaviour
             moveDistance = jumpDistance;
             // 执行跳跃
             canJump = true;
+            AudioManager.instance.SetJumpClip(0);
 
             if (dir == Direction.Up)
             {
@@ -155,6 +156,7 @@ public class PlayerController : MonoBehaviour
         {
             buttonHeld = false;
             canJump = true;
+            AudioManager.instance.SetJumpClip(1);
 
             if (dir == Direction.Up)
             {
@@ -217,6 +219,7 @@ public class PlayerController : MonoBehaviour
     #region Animation Event 动画事件
     public void JumpAnimationEvent()
     {
+        AudioManager.instance.PlayJumpFx();
         // 修改跳跃状态
         isJump = true;
 
@@ -224,7 +227,6 @@ public class PlayerController : MonoBehaviour
         sr.sortingLayerName = "Front";
 
         transform.parent = null;
-
     }
 
     public void FinishJumpAnimationEvent()
