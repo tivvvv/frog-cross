@@ -32,6 +32,22 @@ public class AudioManager : MonoBehaviour
         PlayMusic();
     }
 
+    private void OnEnable()
+    {
+        EventHandler.GameOverEvent += OnGameOverEvent;
+    }
+
+    private void OnDisable()
+    {
+        EventHandler.GameOverEvent -= OnGameOverEvent;
+    }
+
+    private void OnGameOverEvent()
+    {
+        fx.clip = deadClip;
+        fx.Play();
+    }
+
     /// <summary>
     /// 设置跳跃的音效片段
     /// </summary>
