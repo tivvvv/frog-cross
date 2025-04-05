@@ -64,7 +64,7 @@ public class AudioManager : MonoBehaviour
 
     public void PlayMusic()
     {
-        if (!bgm.isPlaying)
+        if (bgm.enabled && !bgm.isPlaying)
         {
             bgm.Play();
         }
